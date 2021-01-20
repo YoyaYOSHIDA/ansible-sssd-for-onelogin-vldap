@@ -1,0 +1,14 @@
+# gidNumber of OneLogin
+# See https://gist.github.com/YoyaYOSHIDA/fdd14c712aa0e308b5a3fd72722a02a0#add-onelogin-gidnumber-to-etc-group
+ONELOGIN_GIDNUMBER: ""
+
+# Group name counterpart to gidNumber
+# Define as you want.
+ONELOGIN_GROUPNAME: ""
+
+# cn for ldap_default_bind_dn
+# See https://gist.github.com/YoyaYOSHIDA/fdd14c712aa0e308b5a3fd72722a02a0#create-and-edit-sssd-conf
+PRIVILEGED_USER_CN: ""
+
+# Sub domain of your OneLogin account
+ONELOGIN_SUBDOMAIN: ""

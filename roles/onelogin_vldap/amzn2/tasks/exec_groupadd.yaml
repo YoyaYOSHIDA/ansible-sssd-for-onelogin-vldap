@@ -1,0 +1,12 @@
+- name: ensure group "{{ ONELOGIN_GROUPNAME }}" exits
+  group:
+    name: "{{ ONELOGIN_GROUPNAME }}"
+    gid: "{{ ONELOGIN_GIDNUMBER }}"
+    state: present
+
+- name: Add group "{{ ONELOGIN_GROUPNAME }}" to sudoers
+  lineinfile:
+    dest: /etc/sudoers
+    insertafter: '^## Same thing without a password'
+    line: "%{{ ONELOGIN_GROUPNAME }} ALL=(ALL) NOPASSWD: ALL"
+    state: present

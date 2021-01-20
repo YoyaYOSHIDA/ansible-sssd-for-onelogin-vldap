@@ -1,0 +1,5 @@
+- name: validate OS_DISTRIBUTION
+  fail:
+    msg: "{{ OS_DISTRIBUTION }} is NOT compatible. Fail with Error."
+  when:
+    - OS_DISTRIBUTION not in ['amazonlinux2','centos7', 'centos8', 'redhat7', 'redhat8']

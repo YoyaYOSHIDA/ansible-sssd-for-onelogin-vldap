@@ -1,0 +1,12 @@
+- name: Edit /etc/ssh/sshd_config
+  replace:
+    path: /etc/ssh/sshd_config
+    regexp: '^PasswordAuthentication no'
+    replace: 'PasswordAuthentication yes'
+    backup: true
+
+- name: systemctl restart sshd
+  systemd:
+    name: sshd
+    enabled: yes
+    state: restarted

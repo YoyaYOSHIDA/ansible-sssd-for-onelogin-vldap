@@ -1,0 +1,11 @@
+- name: modify os-distribution for amazonlinux
+  set_fact:
+    OS_DISTRIBUTION: 'amazonlinux'
+  when:
+    OS_DISTRIBUTION == 'amazon2018'
+
+- name: modify os-distribution for amazonlinux2
+  set_fact:
+    OS_DISTRIBUTION: 'amazonlinux2'
+  when:
+    OS_DISTRIBUTION == 'amazon2'

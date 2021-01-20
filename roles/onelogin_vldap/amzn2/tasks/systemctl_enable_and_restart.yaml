@@ -1,0 +1,8 @@
+- name: sytemctl enable and restart sssd and oddjobd
+  systemd:
+    name: "{{ item }}"
+    enabled: yes
+    state: restarted
+  with_items:
+    - sssd
+    - oddjobd

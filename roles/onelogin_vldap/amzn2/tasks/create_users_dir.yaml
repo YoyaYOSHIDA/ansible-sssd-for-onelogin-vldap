@@ -1,0 +1,4 @@
+- name: Ensure /Users directory exist
+  file:
+    path: /Users
+    state: directory

@@ -1,0 +1,22 @@
+# Dare not to use community.general.sefcontext
+- name: semanage fcontext -a -e /home /Users
+  command: semanage fcontext -a -e /home /Users
+  register: semanage_result
+  ignore_errors: true
+
+- name: Notify semanage error
+  pause:
+    prompt: "Make sure semanage fcontext command returned an error."
+  when:
+    - semanage_result.rc != 0
+
+- name: Apply new SELinux file context to filesystem
+  command: restorecon -R -v /Users
+  register: restorecon_result
+  ignore_errors: true
+
+- name: Notify restorecon error
+  pause:
+    prompt: "Make sure restorecon command returned an error."
+  when:
+    - restorecon_result.rc != 0

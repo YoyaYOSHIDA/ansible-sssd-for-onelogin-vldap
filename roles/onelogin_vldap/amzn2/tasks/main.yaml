@@ -1,0 +1,24 @@
+- import_tasks: yum_install_packages.yaml
+  when:
+    - OS_DISTRIBUTION == 'amazonlinux2'
+- import_tasks: create_users_dir.yaml
+  when:
+    - OS_DISTRIBUTION == 'amazonlinux2'
+- import_tasks: exec_groupadd.yaml
+  when:
+    - OS_DISTRIBUTION == 'amazonlinux2'
+- import_tasks: edit_sshd_config.yaml
+  when:
+    - OS_DISTRIBUTION == 'amazonlinux2'
+- import_tasks: deploy_sssd_conf.yaml
+  when:
+    - OS_DISTRIBUTION == 'amazonlinux2'
+- import_tasks: edit_sssd_conf.yaml
+  when:
+    - OS_DISTRIBUTION == 'amazonlinux2'
+- import_tasks: exec_authconfig.yaml
+  when:
+    - OS_DISTRIBUTION == 'amazonlinux2'
+- import_tasks: systemctl_enable_and_restart.yaml
+  when:
+    - OS_DISTRIBUTION == 'amazonlinux2'

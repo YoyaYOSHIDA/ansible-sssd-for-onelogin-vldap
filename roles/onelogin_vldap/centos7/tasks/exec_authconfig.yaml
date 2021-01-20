@@ -1,0 +1,2 @@
+- name: Execute authconfig
+  shell: authconfig --enablesssd --enablesssdauth --enablelocauthorize --disableldap --disableldapauth --disableldaptls --enablemkhomedir --update

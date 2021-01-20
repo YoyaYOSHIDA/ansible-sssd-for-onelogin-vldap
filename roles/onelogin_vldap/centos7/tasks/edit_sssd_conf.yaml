@@ -1,0 +1,24 @@
+- name: Edit params - /etc/sssd/sssd.conf
+  replace:
+    path: /etc/sssd/sssd.conf
+    regexp: "{{ item.before }}"
+    replace: "{{ item.after }}"
+    backup: true
+  with_items:
+    - before: 'LDAP_DEFAULT_AUTHTOK_TOBE'
+      after: "{{ LDAP_DEFAULT_AUTHTOK }}"
+    - before: 'PRIVILEGED_USER_CN_TOBE'
+      after: "{{ PRIVILEGED_USER_CN }}"
+    - before: 'ONELOGIN_SUBDOMAIN_TOBE'
+      after: "{{ ONELOGIN_SUBDOMAIN }}"
+  no_log: true
+
+- name: Ensure permission of /etc/sssd/sssd.conf is proper
+  file:
+    path: /etc/sssd/sssd.conf
+    state: touch
+    recurse: false
+    owner: root
+    group: root
+    mode: '0600'
+

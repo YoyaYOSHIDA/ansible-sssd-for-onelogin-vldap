@@ -1,0 +1,52 @@
+[sssd]
+#debug_level = 8
+config_file_version = 2
+domains = my_ldap_domain
+services = nss, sudo, pam, autofs, ifp, ssh
+
+[domain/my_ldap_domain]
+#debug_level = 8
+access_provider = permit
+auth_provider = ldap
+autofs_provider = ldap
+cache_credentials = true
+case_sensitive = false
+chpass_provider = ldap
+fallback_homedir = /Users/%u
+id_provider = ldap
+ldap_default_authtok_type = password 
+ldap_default_authtok = LDAP_DEFAULT_AUTHTOK_TOBE
+ldap_default_bind_dn = cn=PRIVILEGED_USER_CN_TOBE,ou=users,dc=ONELOGIN_SUBDOMAIN_TOBE,dc=onelogin,dc=com
+ldap_group_object_class = groupOfNames
+ldap_group_search_base = ou=groups,dc=ONELOGIN_SUBDOMAIN_TOBE,dc=onelogin,dc=com
+ldap_id_use_start_tls = false
+ldap_search_base = ou=users,dc=ONELOGIN_SUBDOMAIN_TOBE,dc=onelogin,dc=com
+ldap_tls_reqcert = hard
+ldap_uri = ldaps://ldap.us.onelogin.com
+ldap_user_object_class = inetOrgPerson
+ldap_user_search_base = ou=users,dc=ONELOGIN_SUBDOMAIN_TOBE,dc=onelogin,dc=com
+sudo_provider = ldap
+# and the other params...
+
+[nss]
+#debug_level = 8
+homedir_substring = /Users
+# and the other params...
+
+[pam]
+#debug_level = 8
+offline_credentials_expiration = 0
+# and the other params...
+
+[sudo]
+#debug_level = 8
+# and the other params...
+
+[autofs]
+
+[ssh]
+
+[pac]
+
+[ifp]
+

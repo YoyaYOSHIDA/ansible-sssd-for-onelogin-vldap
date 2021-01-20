@@ -1,0 +1,12 @@
+- name: yum install
+  yum:
+    name:
+      - sssd
+      - sssd-tools
+      - sssd-dbus
+      - oddjob
+      - oddjob-mkhomedir
+      - sssd-client
+      - sssd-ldap
+      - policycoreutils-python
+    state: present

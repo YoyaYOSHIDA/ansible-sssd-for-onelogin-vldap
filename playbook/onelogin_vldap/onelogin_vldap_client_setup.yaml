@@ -1,0 +1,20 @@
+#title           : onelogin_vldap_client_setup.yaml 
+#description     : Execute OneLogin VLDAP client initial setup.
+#author          : YoyaYOSHIDA(https://github.com/YoyaYOSHIDA)
+#usage           : ansible-playbook
+#notes           : -
+#==============================================================================
+- hosts: all
+  become: yes
+  vars_files:
+    - "../../vars/onelogin_vldap/{{ inventory_hostname }}.yaml"
+    - "../../vars/onelogin_vldap/ldap_default_authtok.yaml"
+  vars:
+    - NOW_DATE: "{{ lookup('pipe','date +%Y%m%d') }}"
+    - NOW_DATE_TIME: "{{ lookup('pipe','date +%Y%m%d%H%M%S') }}"
+    - OS_DISTRIBUTION: "{{ (ansible_facts['distribution']~ansible_facts['distribution_major_version'])|lower }}"
+  roles:
+    - ../../roles/validation/validate_os-distribution
+    - ../../roles/onelogin_vldap/centos7
+    - ../../roles/onelogin_vldap/centos8
+    - ../../roles/onelogin_vldap/amzn2

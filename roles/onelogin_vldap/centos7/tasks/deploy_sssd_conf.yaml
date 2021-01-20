@@ -1,0 +1,11 @@
+- name: Ensure /etc/sssd exist
+  file:
+    path: /etc/sssd
+    state: directory
+
+- name: Deploy sssd.conf
+  copy:
+    src: "../files/sssd.conf.template"
+    dest: "/etc/sssd/sssd.conf"
+    backup: yes
+
